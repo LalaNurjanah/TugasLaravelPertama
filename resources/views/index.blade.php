@@ -1,0 +1,24 @@
+@extends('layouts.app')
+
+@section('title', 'friends')
+
+@section('content')
+
+@foreach ($friends as $friend)
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{ $friends['Nama'] }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{ $friends['No_tlp'] }}</h6>
+    <p class="card-text">{{ $friends['Alamat'] }}</p>
+    
+    <a href="#" class="card-link btn-warning">Edit Teman</a>
+    <a href="#" class="card-link btn-danger">Delate Teman</a>
+  </div>
+</div>
+
+
+@endforeach
+<div>
+    {{$friends->links()}}
+ </div>
+@endsection
