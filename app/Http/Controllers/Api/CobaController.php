@@ -47,7 +47,7 @@ class CobaController extends Controller
             if ($friends) {
                 return response()->json([
                     'success' => true,
-                    'message'    => 'Teman berhasil di tambahkan',
+                    'message'    => 'Teman Berhasil di tambahkan',
                     'data'       => $friends 
                 ], 200);
             }else {

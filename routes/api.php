@@ -19,5 +19,5 @@ use Illuminate\Support\Facades\Route;
 route::get('', [CobaController::class, 'index']);
 route::resources([
     'friends' =>CobaController::class,
-    'groups' =>groupscontroller::class,
+    'groups' =>GroupsController::class,
 ]);
