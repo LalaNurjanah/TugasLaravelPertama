@@ -53,7 +53,7 @@ class CobaController extends Controller
             }else {
                 return response()->json([
                     'success' => false,
-                    'message'    => 'Teman gagal ditambahkan ',
+                    'message'    => 'Teman Gagal Ditambahkan ',
                     'data'       => $friends 
                 ], 409); 
             }
