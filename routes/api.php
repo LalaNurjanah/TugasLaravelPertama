@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\CobaController;
+use App\Http\Controllers\Api\GroupsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+route::get('', [CobaController::class, 'index']);
+route::resources([
+    'friends' =>cobacontroller::class,
+    'groups' =>groupscontroller::class,
+]);
