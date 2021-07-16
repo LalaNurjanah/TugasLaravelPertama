@@ -15,7 +15,7 @@ class CobaController extends Controller
      */
     public function index()
     {
-        $friends = Friends::all();
+        $friends = Friends::with('groups')->whereHas('groups')->get();
 
         return response()->json([
             'success' => true,
@@ -42,6 +42,7 @@ class CobaController extends Controller
             'nama' => $request->nama,
             'no_tlp' => $request->no_tlp,
             'alamat'=> $request->alamat,
+            'groups_id'=> $request->groups_id,
             
         ]);
             if ($friends) {
@@ -60,7 +61,16 @@ class CobaController extends Controller
     }
     public function show ($id)
     {
-        $friend = Friends::where('id',$id)->first();
+        $friend = Friends::with('groups')-> where('id',$id)->get();
+        return response()-> json([
+            'success' => true,
+            'message'    => 'Detail Data Teman ',
+            'data'       => $friend
+        ], 200); 
+    }
+    public function edit ($id)
+    {
+        $friend = Friends::with('groups')-> where('id',$id)->first();
         return response()-> json([
             'success' => true,
             'message'    => 'Detail Data Teman ',
@@ -72,17 +82,20 @@ class CobaController extends Controller
         {
            
     
-            $friend = Friends::find($id)->update([
+            
+    
+            $f = Friends:: find($id)->update([
                 'nama' => $request->nama,
                 'no_tlp' => $request->no_tlp,
-                'alamat' => $request->alamat
+                'alamat'=> $request->alamat,
+                'groups_id'=> $request->groups_id,
+                
             ]);
-    
-            return response()->json([
-                'success' => true,
-                'message' => 'Data telah berhasil di rubah',
-                'data'    => $friend
-            ], 200);
+                    return response()->json([
+                        'success' => true,
+                        'message'    => 'post update',
+                        'data'       => $f ,
+                    ], 200);
         }
         public function destroy($id)
         {

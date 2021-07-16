@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Groups;
+use App\Models\Friends;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
